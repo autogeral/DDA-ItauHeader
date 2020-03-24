@@ -1,8 +1,0 @@
-br\com\autogeral\dda\Leitor.class
-br\com\autogeral\dda\arquivo\retorno\HeaderArquivo.class
-br\com\autogeral\dda\arquivo\retorno\RegistroHeaderLote.class
-br\com\autogeral\dda\arquivo\retorno\RegistroDetalheSegmentoG.class
-br\com\autogeral\dda\arquivo\retorno\DebitoDiretoAutorizadoInteface.class
-br\com\autogeral\dda\arquivo\retorno\RegistroDetalheSegmentoH.class
-br\com\autogeral\dda\arquivo\retorno\RegistroTrailerArquivo.class
-br\com\autogeral\dda\arquivo\retorno\RegistroTrailerLote.class
