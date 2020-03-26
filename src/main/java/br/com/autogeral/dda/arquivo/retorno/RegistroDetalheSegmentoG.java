@@ -15,26 +15,26 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     private String codigoSequencial;
     private String codigoSegmento;
     private String complementoBranco;
-    private Integer codigoMovimento;
-    private Integer codigoBancoCamaraCompensacao;
+    private String codigoMovimento;
+    private String codigoBancoCamaraCompensacao;
     private String codigoMoeda;
-    private Integer digitoDAC;
+    private String digitoDAC;
     private String fatorVencimento;
-    private Double valorImpressoCodigoBarras;
+    private String valorImpressoCodigoBarras;
     private String campoLivre;
-    private Integer tipoInscricao;
-    private Long numeroInscricao;
+    private String tipoInscricao;
+    private String numeroInscricao;
     private String nomeCedente;
     private Date vencimentoTitulo;
     private Double valorTitulo;
     private Double moeda;
     private Integer codigoMoedaTitulo;
     private String numeroDocumento;
-    private Integer agenciaCobradora;
+    private String agenciaCobradora;
     private Integer digitoDACtitulo;
-    private Integer pracaCobradora;
+    private String pracaCobradora;
     private Integer modalidadeCarteira;
-    private Integer especieTitulo;
+    private String especieTitulo;
     private Date dataEmissaoTitulo;
     private Double jurosMora;
     private Integer codigoPrimeiroDesconto;
@@ -44,6 +44,7 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     private Integer prazoProtesto;
     private Date dataLimite;
     private Integer codigoJurosMora;
+    private String codigoCompletoBoleto;
 
     @Field(offset = 1, length = 3)
     public Integer getCodigoBanco() {
@@ -100,20 +101,20 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 16, length = 2)
-    public Integer getCodigoMovimento() {
+    public String getCodigoMovimento() {
         return codigoMovimento;
     }
 
-    public void setCodigoMovimento(Integer codigoMovimento) {
+    public void setCodigoMovimento(String codigoMovimento) {
         this.codigoMovimento = codigoMovimento;
     }
 
     @Field(offset = 18, length = 3)
-    public Integer getCodigoBancoCamaraCompensacao() {
+    public String getCodigoBancoCamaraCompensacao() {
         return codigoBancoCamaraCompensacao;
     }
 
-    public void setCodigoBancoCamaraCompensacao(Integer codigoBancoCamaraCompensacao) {
+    public void setCodigoBancoCamaraCompensacao(String codigoBancoCamaraCompensacao) {
         this.codigoBancoCamaraCompensacao = codigoBancoCamaraCompensacao;
     }
 
@@ -127,11 +128,11 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 22, length = 1)
-    public Integer getDigitoDAC() {
+    public String getDigitoDAC() {
         return digitoDAC;
     }
 
-    public void setDigitoDAC(Integer digitoDAC) {
+    public void setDigitoDAC(String digitoDAC) {
         this.digitoDAC = digitoDAC;
     }
 
@@ -144,12 +145,12 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
         this.fatorVencimento = dataFatorVencimento;
     }
 
-    @Field(offset = 27, length = 8)
-    public Double getValorImpressoCodigoBarras() {
+    @Field(offset = 27, length = 10)
+    public String getValorImpressoCodigoBarras() {
         return valorImpressoCodigoBarras;
     }
 
-    public void setValorImpressoCodigoBarras(Double valorImpressoCodigoBarras) {
+    public void setValorImpressoCodigoBarras(String valorImpressoCodigoBarras) {
         this.valorImpressoCodigoBarras = valorImpressoCodigoBarras;
     }
 
@@ -163,20 +164,20 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 62, length = 1)
-    public Integer getTipoInscricao() {
+    public String getTipoInscricao() {
         return tipoInscricao;
     }
 
-    public void setTipoInscricao(Integer tipoInscricao) {
+    public void setTipoInscricao(String tipoInscricao) {
         this.tipoInscricao = tipoInscricao;
     }
 
     @Field(offset = 63, length = 15)
-    public Long getNumeroInscricao() {
+    public String getNumeroInscricao() {
         return numeroInscricao;
     }
 
-    public void setNumeroInscricao(Long numeroInscricao) {
+    public void setNumeroInscricao(String numeroInscricao) {
         this.numeroInscricao = numeroInscricao;
     }
 
@@ -208,7 +209,7 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
         this.valorTitulo = valorTitulo;
     }
 
-    @Field(offset = 131, length = 14)
+    @Field(offset = 131, length = 15)
     public Double getMoeda() {
         return moeda;
     }
@@ -236,11 +237,11 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 163, length = 5)
-    public Integer getAgenciaCobradora() {
+    public String getAgenciaCobradora() {
         return agenciaCobradora;
     }
 
-    public void setAgenciaCobradora(Integer agenciaCobradora) {
+    public void setAgenciaCobradora(String agenciaCobradora) {
         this.agenciaCobradora = agenciaCobradora;
     }
 
@@ -254,11 +255,11 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 169, length = 10)
-    public Integer getPracaCobradora() {
+    public String getPracaCobradora() {
         return pracaCobradora;
     }
 
-    public void setPracaCobradora(Integer pracaCobradora) {
+    public void setPracaCobradora(String pracaCobradora) {
         this.pracaCobradora = pracaCobradora;
     }
 
@@ -272,11 +273,11 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 180, length = 2)
-    public Integer getEspecieTitulo() {
+    public String getEspecieTitulo() {
         return especieTitulo;
     }
 
-    public void setEspecieTitulo(Integer especieTitulo) {
+    public void setEspecieTitulo(String especieTitulo) {
         this.especieTitulo = especieTitulo;
     }
 
@@ -364,9 +365,20 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
         this.codigoJurosMora = codigoJurosMora;
     }
 
+    public String getCodigoCompletoBoleto() {
+        return codigoCompletoBoleto;
+    }
+
+    public void setCodigoCompletoBoleto(String codigoCompletoBoleto) {
+        this.codigoCompletoBoleto = codigoCompletoBoleto;
+    }
+    
+    
+
     @Override
     public String toString() {
         return "RegistroDetalheSegmentoG{" + "codigoBanco=" + codigoBanco + ", codigoLote=" + codigoLote + ", tipoRegistro=" + tipoRegistro + ", codigoSequencial=" + codigoSequencial + ", codigoSegmento=" + codigoSegmento + ", complementoBranco=" + complementoBranco + ", codigoMovimento=" + codigoMovimento + ", codigoBancoCamaraCompensacao=" + codigoBancoCamaraCompensacao + ", codigoMoeda=" + codigoMoeda + ", digitoDAC=" + digitoDAC + ", fatorVencimento=" + fatorVencimento + ", valorImpressoCodigoBarras=" + valorImpressoCodigoBarras + ", campoLivre=" + campoLivre + ", tipoInscricao=" + tipoInscricao + ", numeroInscricao=" + numeroInscricao + ", nomeCedente=" + nomeCedente + ", vencimentoTitulo=" + vencimentoTitulo + ", valorTitulo=" + valorTitulo + ", moeda=" + moeda + ", codigoMoedaTitulo=" + codigoMoedaTitulo + ", numeroDocumento=" + numeroDocumento + ", agenciaCobradora=" + agenciaCobradora + ", digitoDACtitulo=" + digitoDACtitulo + ", pracaCobradora=" + pracaCobradora + ", modalidadeCarteira=" + modalidadeCarteira + ", especieTitulo=" + especieTitulo + ", dataEmissaoTitulo=" + dataEmissaoTitulo + ", jurosMora=" + jurosMora + ", codigoPrimeiroDesconto=" + codigoPrimeiroDesconto + ", dataPrimeiroDesconto=" + dataPrimeiroDesconto + ", valorPrimeiroDesconto=" + valorPrimeiroDesconto + ", codigoProtesto=" + codigoProtesto + ", prazoProtesto=" + prazoProtesto + ", dataLimite=" + dataLimite + ", codigoJurosMora=" + codigoJurosMora + '}';
     }
-
+    
+    
 }

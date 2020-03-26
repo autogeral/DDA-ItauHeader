@@ -10,15 +10,15 @@ import com.ancientprogramming.fixedformat4j.annotation.Record;
 public class HeaderArquivo implements DebitoDiretoAutorizadoInteface{
 
     private Integer codigoBanco;
-    private Integer codigoLote;
+    private String codigoLote;
     private Integer tipoRegistro;
     private String brancosComplemento;
     private Integer codigoInscricao;
     private Long inscricaoNumero;
     private String convenio;
-    private Integer agencia;
+    private String agencia;
     private String digitoVerificadorAgencia;
-    private Long numeroContaCorrente;
+    private String numeroContaCorrente;
     private String digitoVerificadorConta;
     private String digitoVerificadorAgenciaConta;
     private String nomeEmpresa;
@@ -28,7 +28,7 @@ public class HeaderArquivo implements DebitoDiretoAutorizadoInteface{
     private Date dataGeracao;
     private String horaGeracao;
     private String numeroSequenciaArquivoRetorno;
-    private Integer layoutArquivo;
+    private String layoutArquivo;
     private String brancosComplemento3;
 
     @Field(offset = 1, length = 3)
@@ -41,11 +41,11 @@ public class HeaderArquivo implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 4, length = 4)
-    public Integer getCodigoLote() {
+    public String getCodigoLote() {
         return codigoLote;
     }
 
-    public void setCodigoLote(Integer codigoLote) {
+    public void setCodigoLote(String codigoLote) {
         this.codigoLote = codigoLote;
     }
 
@@ -95,11 +95,11 @@ public class HeaderArquivo implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 53, length = 5)
-    public Integer getAgencia() {
+    public String getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(Integer agencia) {
+    public void setAgencia(String agencia) {
         this.agencia = agencia;
     }
 
@@ -113,11 +113,11 @@ public class HeaderArquivo implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 59, length = 12)
-    public Long getNumeroContaCorrente() {
+    public String getNumeroContaCorrente() {
         return numeroContaCorrente;
     }
 
-    public void setNumeroContaCorrente(Long numeroContaCorrente) {
+    public void setNumeroContaCorrente(String numeroContaCorrente) {
         this.numeroContaCorrente = numeroContaCorrente;
     }
 
@@ -204,11 +204,11 @@ public class HeaderArquivo implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 164, length = 3)
-    public Integer getLayoutArquivo() {
+    public String getLayoutArquivo() {
         return layoutArquivo;
     }
 
-    public void setLayoutArquivo(Integer layoutArquivo) {
+    public void setLayoutArquivo(String layoutArquivo) {
         this.layoutArquivo = layoutArquivo;
     }
 

@@ -16,32 +16,33 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Leitor {
 
-    
-    public static void main(String[] args) {
-        String caminho  = "C:\\Users\\Kaique\\Documents\\Trabalho\\VarreduraDoSacado\\";
-       Leitor l = new Leitor();
-       File f = new File(caminho);
-       l.defineLeitura(f);
-    }
     public FixedFormatManager FFM = new FixedFormatManagerImpl();
+    public static List<DebitoDiretoAutorizadoInteface> registros = new ArrayList<>();
+    static String DIRETORIO_RAIZ = "C:\\Users\\Kaique\\Documents\\Trabalho\\VarreduraDoSacado\\";
+
+    public static void main(String[] args) {
+        String caminho = "C:\\Users\\Kaique\\Documents\\Trabalho\\VarreduraDoSacado\\";
+        Leitor l = new Leitor();
+        File f = new File(DIRETORIO_RAIZ);
+        l.defineLeitura(f);
+    }
 
     public List<DebitoDiretoAutorizadoInteface> defineLeitura(File diretorio) {
-
-        Leitor leitor = new Leitor();
         File arquivos[];
         arquivos = diretorio.listFiles();
 
         for (File arquivo : arquivos) {
             if (arquivo.getName().toLowerCase().contains("vs")) {
-                leitor.lerArquivo(arquivo);
+                this.lerArquivo(arquivo);
             }
         }
 
-        return null;
+        return registros;
     }
 
     public void lerArquivo(File file) {
@@ -65,49 +66,55 @@ public class Leitor {
         }
     }
 
-    public void trataRegistro(String l) {
+    public List<DebitoDiretoAutorizadoInteface> trataRegistro(String l) {
 
-        String tipoRegistro = l.substring(7,8);
+        String tipoRegistro = l.substring(7, 8);
         System.out.println("Linha :" + l);
         switch (tipoRegistro) {
 
             case "0": {
                 HeaderArquivo headerArquivo = FFM.load(HeaderArquivo.class, l);
                 System.out.println(headerArquivo.toString());
+                registros.add(headerArquivo);
             }
             break;
 
             case "1": {
                 RegistroHeaderLote rh = FFM.load(RegistroHeaderLote.class, l);
                 System.out.println(rh.toString());
+                registros.add(rh);
             }
             break;
             case "3": {
-                if (l.substring(13,14).equals("G")) {
+                if (l.substring(13, 14).equals("G")) {
                     RegistroDetalheSegmentoG rd = FFM.load(RegistroDetalheSegmentoG.class, l);
+                    rd.setCodigoCompletoBoleto(rd.getCodigoBancoCamaraCompensacao().concat(Integer.toString(rd.getCodigoMoedaTitulo()).concat(rd.getDigitoDAC()).concat(rd.getFatorVencimento()).concat(rd.getValorImpressoCodigoBarras()).concat(rd.getCampoLivre())));
                     System.out.println(rd.toString());
+                    System.out.println("CODIGO BOLETO = " + rd.getCodigoCompletoBoleto());
+                    registros.add(rd);
                 } else {
                     RegistroDetalheSegmentoH rdh = FFM.load(RegistroDetalheSegmentoH.class, l);
                     System.out.println(rdh.toString());
-
+                    registros.add(rdh);
                 }
             }
             break;
             case "5": {
                 RegistroTrailerLote rtl = FFM.load(RegistroTrailerLote.class, l);
                 System.out.println(rtl.toString());
+                registros.add(rtl);
             }
             break;
             case "9": {
                 RegistroTrailerArquivo rta = FFM.load(RegistroTrailerArquivo.class, l);
                 System.out.println(rta.toString());
-
+                registros.add(rta);
             }
             break;
 
             default:
                 System.err.println("Linha Não lida : " + l);
         }
-
+        return registros;
     }
 }
