@@ -38,7 +38,7 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     private Date dataEmissaoTitulo;
     private Double jurosMora;
     private Integer codigoPrimeiroDesconto;
-    private Date dataPrimeiroDesconto;
+    private String dataPrimeiroDesconto;
     private Double valorPrimeiroDesconto;
     private Integer codigoProtesto;
     private Integer prazoProtesto;
@@ -311,11 +311,11 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
 
     @Field(offset = 206, length = 8)
     @FixedFormatPattern("ddMMyyyy")
-    public Date getDataPrimeiroDesconto() {
+    public String getDataPrimeiroDesconto() {
         return dataPrimeiroDesconto;
     }
 
-    public void setDataPrimeiroDesconto(Date dataPrimeiroDesconto) {
+    public void setDataPrimeiroDesconto(String dataPrimeiroDesconto) {
         this.dataPrimeiroDesconto = dataPrimeiroDesconto;
     }
 

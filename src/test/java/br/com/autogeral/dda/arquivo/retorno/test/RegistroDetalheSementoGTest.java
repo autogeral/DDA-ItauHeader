@@ -30,9 +30,9 @@ public class RegistroDetalheSementoGTest {
     String numeroInscricao = "033358107000165";
     String nomeCedente = "DEBORA SETTANI PINTO GONCALVES";
     Date vencimentoTitulo;
-    //Double valorTitulo = "000000000040000";
+    Double valorTitulo = 400.0;
     Double moeda = 0.0;
-    String codigoMoedaTitulo = "09";
+    Integer codigoMoedaTitulo = 9;
     String numeroDocumento = "27";
     String agenciaCobradora = "00000";
     Integer digitoDACtitulo = 0;
@@ -42,7 +42,7 @@ public class RegistroDetalheSementoGTest {
     Date dataEmissaoTitulo = java.sql.Date.valueOf(LocalDate.parse("09032020", DateTimeFormatter.ofPattern("ddMMyyyy")));
     Double jurosMora = 0.0;
     Integer codigoPrimeiroDesconto = 0;
-    // Date dataPrimeiroDesconto = java.sql.Date.valueOf(LocalDate.parse("00000000", DateTimeFormatter.ofPattern("ddMMyyyy")));
+    String dataPrimeiroDesconto ="00000000";
     Double valorPrimeiroDesconto = 0.0;
     Integer codigoProtesto = 0;
     Integer prazoProtesto = 0;
@@ -86,6 +86,8 @@ public class RegistroDetalheSementoGTest {
         Assert.assertEquals(rd.getPrazoProtesto(), prazoProtesto);
         Assert.assertEquals(rd.getDataLimite(), dataLimite);
         Assert.assertEquals(rd.getCodigoJurosMora(), codigoJurosMora);
+        Assert.assertEquals(rd.getDataPrimeiroDesconto(),dataPrimeiroDesconto);
+        Assert.assertEquals(rd.getValorTitulo(),valorTitulo);
 
         String codigoBoleto = rd.getCodigoBancoCamaraCompensacao().concat(Integer.toString(rd.getCodigoMoedaTitulo()).concat(rd.getDigitoDAC()).concat(rd.getFatorVencimento()).concat(rd.getValorImpressoCodigoBarras()).concat(rd.getCampoLivre()));
         System.out.println("CODIGO BOLETO = " + codigoBoleto);
