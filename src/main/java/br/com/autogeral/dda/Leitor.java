@@ -1,5 +1,6 @@
 package br.com.autogeral.dda;
 
+import br.com.autogeral.dda.arquivo.retorno.Boleto;
 import br.com.autogeral.dda.arquivo.retorno.DebitoDiretoAutorizadoInteface;
 import br.com.autogeral.dda.arquivo.retorno.HeaderArquivo;
 import br.com.autogeral.dda.arquivo.retorno.RegistroDetalheSegmentoG;
@@ -23,10 +24,10 @@ public class Leitor {
 
     public FixedFormatManager FFM = new FixedFormatManagerImpl();
     public static List<DebitoDiretoAutorizadoInteface> registros = new ArrayList<>();
-    static String DIRETORIO_RAIZ = "C:\\Users\\Kaique\\Documents\\Trabalho\\VarreduraDoSacado\\";
+    public static List<Boleto> boletos = new ArrayList<Boleto>();
+    static String DIRETORIO_RAIZ = "C:\\Users\\kaique.mota\\Desktop\\Varredura";
 
     public static void main(String[] args) {
-        String caminho = "C:\\Users\\Kaique\\Documents\\Trabalho\\VarreduraDoSacado\\";
         Leitor l = new Leitor();
         File f = new File(DIRETORIO_RAIZ);
         l.defineLeitura(f);
@@ -86,17 +87,34 @@ public class Leitor {
             }
             break;
             case "3": {
+                RegistroDetalheSegmentoG rd = null;
+                RegistroDetalheSegmentoH rh = null;
                 if (l.substring(13, 14).equals("G")) {
-                    RegistroDetalheSegmentoG rd = FFM.load(RegistroDetalheSegmentoG.class, l);
+                    rd = FFM.load(RegistroDetalheSegmentoG.class, l);
                     rd.setCodigoCompletoBoleto(rd.getCodigoBancoCamaraCompensacao().concat(Integer.toString(rd.getCodigoMoedaTitulo()).concat(rd.getDigitoDAC()).concat(rd.getFatorVencimento()).concat(rd.getValorImpressoCodigoBarras()).concat(rd.getCampoLivre())));
                     System.out.println(rd.toString());
                     System.out.println("CODIGO BOLETO = " + rd.getCodigoCompletoBoleto());
+                    System.out.println("CODIGO LINHA DIGITAVEL = " + rd.getCodigoBancoCamaraCompensacao().
+                            concat(Integer.toString(rd.getCodigoMoedaTitulo())).
+                            concat(rd.getCodigoCompletoBoleto().substring(19, 24)).
+                            concat("*").
+                            concat(Integer.toString(rd.getTipoRegistro())).
+                            concat(rd.getCodigoCompletoBoleto().substring(24, 34)).
+                            concat("*").
+                            concat(rd.getCodigoCompletoBoleto().substring(34, 44)).
+                            concat("*").
+                            concat(rd.getCodigoCompletoBoleto().substring(5, 9)).
+                            concat(rd.getDigitoDAC()).
+                            concat(rd.getCodigoCompletoBoleto().substring(9, 19)));
+                    System.out.println(rd.getCodigoCompletoBoleto().substring(20, 24));
                     registros.add(rd);
                 } else {
-                    RegistroDetalheSegmentoH rdh = FFM.load(RegistroDetalheSegmentoH.class, l);
-                    System.out.println(rdh.toString());
-                    registros.add(rdh);
+                    rh = FFM.load(RegistroDetalheSegmentoH.class, l);
+                    System.out.println(rh.toString());
+                    registros.add(rh);
                 }
+                Boleto b = new Boleto(rd, rh);
+                boletos.add(b);
             }
             break;
             case "5": {
