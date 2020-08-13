@@ -23,7 +23,7 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     private String valorImpressoCodigoBarras;
     private String campoLivre;
     private String tipoInscricao;
-    private String numeroInscricao;
+    private Long numeroInscricao;
     private String nomeCedente;
     private Date vencimentoTitulo;
     private Double valorTitulo;
@@ -173,11 +173,11 @@ public class RegistroDetalheSegmentoG implements DebitoDiretoAutorizadoInteface{
     }
 
     @Field(offset = 63, length = 15)
-    public String getNumeroInscricao() {
+    public Long getNumeroInscricao() {
         return numeroInscricao;
     }
 
-    public void setNumeroInscricao(String numeroInscricao) {
+    public void setNumeroInscricao(Long numeroInscricao) {
         this.numeroInscricao = numeroInscricao;
     }
 

@@ -24,7 +24,7 @@ import br.com.autogeral.dda.arquivo.retorno.RegistroTrailerLote;
 public class Leitor {
 
 	public FixedFormatManager FFM = new FixedFormatManagerImpl();
-	static String DIRETORIO_RAIZ = "C:\\Users\\kaique.mota\\Desktop\\Varredura";
+	static String DIRETORIO_RAIZ = "C:\\Users\\kaique.mota\\Desktop\\Cnab\\VS01040A.RET";
 	private BufferedReader br;
 
 	public static void main(String[] args) {

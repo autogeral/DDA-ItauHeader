@@ -16,7 +16,7 @@ public class RegistroDetalheSegmentoH implements DebitoDiretoAutorizadoInteface 
     private String complementoBranco;
     private Integer codigoMovimento;
     private Integer codigoInscricaoAvalista;
-    private Integer inscricaoNumero;
+    private Long inscricaoNumero;
     private String sacadorAvalista;
     private Integer codigoSegundoDesconto;
     private Date dataSegundoDesconto;
@@ -94,12 +94,12 @@ public class RegistroDetalheSegmentoH implements DebitoDiretoAutorizadoInteface 
         this.codigoInscricaoAvalista = codigoInscricaoAvalista;
     }
 
-    @Field(offset = 18, length = 1)
-    public Integer getInscricaoNumero() {
+    @Field(offset = 19, length = 15)
+    public Long getInscricaoNumero() {
         return inscricaoNumero;
     }
 
-    public void setInscricaoNumero(Integer inscricaoNumero) {
+    public void setInscricaoNumero(Long inscricaoNumero) {
         this.inscricaoNumero = inscricaoNumero;
     }
 
