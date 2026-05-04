@@ -61,7 +61,7 @@ public class Leitor {
 				System.err.println("Erro ao tentar ler o arquivo");
 			}
 		} else {
-			System.err.println("Arquivo não encontrado!!");
+			System.err.println("Arquivo nÃ£o encontrado!!");
 		}
 		return registros;
 	}
@@ -120,7 +120,7 @@ public class Leitor {
 			break;
 
 		default:
-			System.err.println("Linha Não lida : " + l);
+			System.err.println("Linha Nï¿½o lida : " + l);
 		}
 		return registros;
 	}
